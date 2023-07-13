@@ -1,3 +1,4 @@
+console.log('sohrab: at top of codecept.conf.js...');
 var url;
 if (process.env.WEBAPP_URL){
   url = process.env.WEBAPP_URL;

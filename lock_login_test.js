@@ -1,3 +1,5 @@
+console.log('sohrab: at top of lock_login_test.js...');
+
 Feature('SPA login');
 
 Scenario('Log in using Lock', ({ I }) => {

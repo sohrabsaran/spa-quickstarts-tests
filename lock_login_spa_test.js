@@ -1,6 +1,10 @@
+console.log('sohrab: at top of lock_login_spa_test.js...');
+
 Feature("SPA login with new responsive design");
 
-Scenario("Log in using Lock", ({ I }) => {
+Scenario("Log in using Lock", (input) => {
+  const { I } = input;
+  console.log("sohrab: executing scenario handler function for scenario 'Log in using Lock', input =", input);
   I.amOnPage("/");
   I.waitForVisible("#qsLoginBtn", 20);
   I.click("#qsLoginBtn");
