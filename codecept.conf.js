@@ -65,7 +65,7 @@ exports.config = {
     }
   },
   "include": {
-    "input": {}//undefined//"./pages/openhome.js"
+    "input": {"somekey":"somevalue"}//undefined//"./pages/openhome.js"
   },
   "bootstrap": false,
   "mocha": {},
