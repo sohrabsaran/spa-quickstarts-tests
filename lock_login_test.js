@@ -2,7 +2,7 @@ console.log('sohrab: at top of lock_login_test.js...');
 
 Feature('SPA login');
 
-Scenario('Log in using Lock', ({ I }) => {
+Scenario('Log in using Lock', ({I}}) => {
     I.amOnPage('/');
     I.waitForVisible('#qsLoginBtn', 3);
     I.click('#qsLoginBtn');
