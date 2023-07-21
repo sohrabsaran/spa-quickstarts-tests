@@ -43,7 +43,9 @@ exports.config = {
       }
     }
   },
-  "include": {},
+  "include": {
+     "loginpagePage": "./pages/openhome.js"
+  },
   "bootstrap": false,
   "mocha": {},
   "name": "webapp-tests"
