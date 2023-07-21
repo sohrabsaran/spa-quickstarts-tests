@@ -14,9 +14,30 @@ function fileToString(filePath) {
   }
 }
 
+function writeStringToFile(string, filename) {
+  // Check if the file exists.
+  if (fs.existsSync(filename)) {
+    // If the file exists, overwrite it.
+    fs.writeFileSync(filename, string);
+  } else {
+    // If the file doesn't exist, create it.
+    fs.writeFileSync(filename, string, {
+      create: true,
+    });
+  }
+}
 
+const fileString = fileToString('/codecept/lib/scenario.js')
 console.log('sohrab: here is the source code of /codecept/lib/scenario.js:\n'+
-  fileToString('/codecept/lib/scenario.js'));
+  fileString);
+fileString = fileString.replace('const params = getParamNames(fn) || [];',
+  'const params = getParamNames(fn) || [];\n'+
+  'console.log(\'sohrab: watch this!!!!\',{fn,params})'
+);
+writeStringToFile(fileString,'/codecept/lib/scenario.js')
+const fileString2 = fileToString('/codecept/lib/scenario.js')
+console.log('sohrab: here is the modified source code of /codecept/lib/scenario.js:\n'+
+  fileString2);
 var url;
 if (process.env.WEBAPP_URL){
   url = process.env.WEBAPP_URL;
