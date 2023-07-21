@@ -65,7 +65,7 @@ exports.config = {
     }
   },
   "include": {
-    "I": inject().I,
+    //"I": inject().I,
     "input": {"somekey":"somevalue"}//undefined//"./pages/openhome.js"
   },
   "bootstrap": false,
