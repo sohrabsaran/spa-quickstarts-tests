@@ -27,7 +27,7 @@ function writeStringToFile(string, filename) {
   }
 }
 
-const fileString = fileToString('/codecept/lib/scenario.js')
+let fileString = fileToString('/codecept/lib/scenario.js')
 console.log('sohrab: here is the source code of /codecept/lib/scenario.js:\n'+
   fileString);
 fileString = fileString.replace('const params = getParamNames(fn) || [];',
