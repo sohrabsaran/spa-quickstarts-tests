@@ -44,7 +44,7 @@ exports.config = {
     }
   },
   "include": {
-     "loginpagePage": "./pages/openhome.js"
+     "input": "./pages/openhome.js"
   },
   "bootstrap": false,
   "mocha": {},
