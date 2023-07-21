@@ -1,4 +1,22 @@
 console.log('sohrab: at top of codecept.conf.js...');
+
+const fs = require('fs');
+
+function fileToString(filePath) {
+  try {
+    // Read the file contents synchronously (you can use asynchronous methods too)
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    return fileContents;
+  } catch (err) {
+    // Handle any errors that might occur during file reading
+    console.error('Error reading the file:', err.message);
+    return null;
+  }
+}
+
+
+console.log('sohrab: here is the source code of /codecept/lib/scenario.js:\n'+
+  fileToString('/codecept/lib/scenario.js'));
 var url;
 if (process.env.WEBAPP_URL){
   url = process.env.WEBAPP_URL;
