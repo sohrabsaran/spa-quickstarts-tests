@@ -28,20 +28,20 @@ function writeStringToFile(string, filename) {
 }
 
 let fileString = fileToString('/codecept/lib/scenario.js')
-console.log('sohrab: here is the source code of /codecept/lib/scenario.js:\n'+
+console.log('sohrab: here is the source code of /codecept/lib/scenario.js:\n' +
   fileString);
-fileString = fileString.replace('const params = getParamNames(fn) || [];',
-  'const params = getParamNames(fn) || [];\n'+
-  'console.log(\'sohrab: watch this!!!!\',{fn,params})'
-);
-writeStringToFile(fileString,'/codecept/lib/scenario.js')
+const strToInsert = '\nconsole.log(\'sohrab: watch this!!!!\',{fn,params},\'fn to string: \'+fn)';
+fileString = fileString.replace(strToInsert, '');
+const strToExtend = 'const params = getParamNames(fn) || [];'
+fileString = fileString.replace(strToExtend, strToExtend + strToInsert);
+writeStringToFile(fileString, '/codecept/lib/scenario.js')
 const fileString2 = fileToString('/codecept/lib/scenario.js')
-console.log('sohrab: here is the modified source code of /codecept/lib/scenario.js:\n'+
+console.log('sohrab: here is the modified source code of /codecept/lib/scenario.js:\n' +
   fileString2);
 var url;
-if (process.env.WEBAPP_URL){
+if (process.env.WEBAPP_URL) {
   url = process.env.WEBAPP_URL;
-} else if (process.env.SAMPLE_PORT){
+} else if (process.env.SAMPLE_PORT) {
   url = "http://localhost:" + process.env.SAMPLE_PORT;
 } else {
   url = "http://localhost:3000";
@@ -57,15 +57,15 @@ exports.config = {
     }
   },
   "helpers": {
-    "Puppeteer": {  
+    "Puppeteer": {
       "url": url,
-      "chrome":{
+      "chrome": {
         "args": ["--no-sandbox", "--disable-setuid-sandbox"]
       }
     }
   },
   "include": {
-     "input": "./pages/openhome.js"
+    "input": undefined//"./pages/openhome.js"
   },
   "bootstrap": false,
   "mocha": {},
