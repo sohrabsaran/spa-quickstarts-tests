@@ -38,6 +38,8 @@ writeStringToFile(fileString, '/codecept/lib/scenario.js')
 const fileString2 = fileToString('/codecept/lib/scenario.js')
 console.log('sohrab: here is the modified source code of /codecept/lib/scenario.js:\n' +
   fileString2);
+console.log('sohrab: Here is /codecept/lib/actor.js:\n' + fileToString('/codecept/lib/actor.js'));
+console.log('sohrab: Here is /codecept/lib/test.js:\n' + fileToString('/codecept/lib/test.js'));
 var url;
 if (process.env.WEBAPP_URL) {
   url = process.env.WEBAPP_URL;
