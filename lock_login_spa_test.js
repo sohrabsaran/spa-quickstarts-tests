@@ -1,8 +1,9 @@
 console.log('sohrab: at top of lock_login_spa_test.js...');
 
-Feature("SPA login with new responsive design");
+Feature("SPA login with new responsive design 22Jul");
 
 Scenario("Log in using Lock", (/*{I}*/) => {
+  console.log("sohrab: before inject...")
   const {I} = inject();
   console.log("sohrab: executing scenario handler function for scenario 'Log in using Lock'");
   I.amOnPage("/");
