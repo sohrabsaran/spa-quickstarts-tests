@@ -42,7 +42,7 @@ modifyFile('/codecept/lib/scenario.js',
 )
 
 modifyFile('/codecept/lib/actor.js', 
-'\nconsole.log(\'sohrab: watch this!!!!\',{helper,action},\'helper to string: \'+helper+\')',
+'\nconsole.log(\'sohrab: watch this!!!!\',{helper,action},\'helper to string: >>>\'+helper+\'<<<, action to string: >>>\'+action+\'<<<\')',
 'const step = new Step(helper, action);'
 )
 
