@@ -27,19 +27,26 @@ function writeStringToFile(string, filename) {
   }
 }
 
-let fileString = fileToString('/codecept/lib/scenario.js')
-console.log('sohrab: here is the source code of /codecept/lib/scenario.js:\n' +
+function modifyFile(filePath, strToInsert, strToExtend) {
+  let fileString = fileToString(filePath);
+  fileString = fileString.replace(strToInsert, '');
+  fileString = fileString.replace(strToExtend, strToExtend + strToInsert);
+  writeStringToFile(fileString, filePath);
+  console.log('sohrab: here is the modified source code of '+filePath+':\n' +
   fileString);
-const strToInsert = '\nconsole.log(\'sohrab: watch this!!!!\',{fn,params},\'fn to string: \'+fn)';
-fileString = fileString.replace(strToInsert, '');
-const strToExtend = 'const params = getParamNames(fn) || [];'
-fileString = fileString.replace(strToExtend, strToExtend + strToInsert);
-writeStringToFile(fileString, '/codecept/lib/scenario.js')
-const fileString2 = fileToString('/codecept/lib/scenario.js')
-console.log('sohrab: here is the modified source code of /codecept/lib/scenario.js:\n' +
-  fileString2);
-console.log('sohrab: Here is /codecept/lib/actor.js:\n' + fileToString('/codecept/lib/actor.js'));
-console.log('sohrab: Here is /codecept/lib/test.js:\n' + fileToString('/codecept/lib/test.js'));
+}
+
+modifyFile('/codecept/lib/scenario.js', 
+'\nconsole.log(\'sohrab: watch this!!!!\',{fn,params},\'fn to string: \'+fn)',
+'const params = getParamNames(fn) || [];'
+)
+
+modifyFile('/codecept/lib/actor.js', 
+'\nconsole.log(\'sohrab: watch this!!!!\',{helper,action},\'helper to string: \'+helper+\')',
+'const step = new Step(helper, action);'
+)
+
+console.log('sohrab: Here is /codecept/lib/step.js:\n' + fileToString('/codecept/lib/step.js'));
 var url;
 if (process.env.WEBAPP_URL) {
   url = process.env.WEBAPP_URL;
@@ -68,7 +75,7 @@ exports.config = {
   },
   "include": {
     //"I": inject().I,
-    "input": {"somekey":"somevalue"}//undefined//"./pages/openhome.js"
+    "input": { "somekey": "somevalue" }//undefined//"./pages/openhome.js"
   },
   "bootstrap": false,
   "mocha": {},
